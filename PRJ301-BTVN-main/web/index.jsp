@@ -5,7 +5,7 @@
 
 
 <%
-    Person person = (Person) request.getAttribute("person1");
+    String name = (String) request.getAttribute("name");
 %>
 <!DOCTYPE html>
 <html>
@@ -14,76 +14,58 @@
         <title>JSP Page</title>
     </head>
     <body>
-        
-        <a href="<c:url value="/list"></c:url>">BTVN</a>
-        
-        <h1>${name123}</h1>
-        <c:out value="${person.getName()}" />
-
-        <c:if test="${person.getAge() == 21}">
-            123456
-        </c:if>
-
-
-
-
-        <c:choose>
-            <c:when test="${person1.getAge() == 20}">
-                ban 20 tuoi
-                <br />
-            </c:when>   
-
-            <c:when test="${person1.getAge() == 22}">
-                ban 22 tuoi
-                <br />
-            </c:when>
-            <c:otherwise>
-                tuoi ban khac 20 va 22
-                <br />
-            </c:otherwise>
-        </c:choose>
-
-
 
 
 
         <form action="home" method="post">
-            <!--            username
-                        <input type="text" name="txtName">
-                        <br>
-                        password
-                        <input type="text" name="txtPass">
-                        <br>-->
-            <!--<input type="text" name="txtSearch">-->
             <label>Name</label>
-            <input type="text" name="name" value="${person1.getName()}">
-            <br/>
-            <label>Age</label>
-            <input type="text" name="age" value="${person1.getAge()}" >
+            <input type="text" name="name">
             <br/>
             <label>Address</label>
-            <input type="text" name="add" value="${person1.getAddress()}" >
+            <input type="text" name="add" >
             <br/>
-            <button type="submit" value="search"> update </button>
+            <label>Khoa</label>
+            <input type="radio"  name="khoa" value="K15">
+            K15
+            <input type="radio"  name="khoa" value="K16">
+            K16
+            <input type="radio" name="khoa" value="K17">
+            K17
+            <input type="radio" name="khoa" value="K18">
+            K18
+            <br/>
+            <label>DOB</label>
+            <input type="date" name="txtDob">
+            <br/>
+            <label>School</label>
+            <select name="txtSchool">
+                <option value="FBTU">FBTU</option>
+                <option value="FPoly">FPoly</option>
+                <option value="GreenWich">GreenWich</option>
+            </select>
+
+            <br/>
+            <button type="submit" value="save"> save </button>
+
         </form>
 
-
-        <%--<c:forEach var="p" items="${arrPerson}" >--%>
-            <h3>${person1.getName()}</h3>
-            <h3>${person1.getAge()}</h3>
-            <h3>${person1.getAddress()}</h3>
-            <br/>
-            ----------------------
-
-        <%--</c:forEach>--%>
-
-
-
-
-
         <br/>
-        ${status}
-
+        Display info
+        <br/>
+        <label>Name</label>
+        <%= name%>
+        <br/>
+        <label>Address</label>
+        ${address}
+        <br/>
+        <label>Khoa</label>
+        ${khoa}
+        <br/>
+        <label>DOB</label>
+        ${dob}
+        <br/>
+        <label>School</label>
+        ${school}
 
     </body>
 </html>
